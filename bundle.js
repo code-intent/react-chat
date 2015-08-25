@@ -21806,12 +21806,22 @@
 	  }
 	
 	  _createClass(MessageBox, [{
+	    key: "handleKeyPress",
+	    value: function handleKeyPress(e) {
+	      if (e.keyCode == 13) {
+	        var elem = _react2["default"].findDOMNode(this.refs["message-text"]);
+	        var text = elem.innerHTML;
+	        this.props.addThread(text);
+	        elem.innerHTML = "";
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2["default"].createElement(
 	        "div",
 	        { id: "message-box" },
-	        _react2["default"].createElement("div", { contentEditable: "true", placeholder: "create message" })
+	        _react2["default"].createElement("div", { contentEditable: "true", ref: "message-text", onKeyDown: this.handleKeyPress.bind(this), placeholder: "create message" })
 	      );
 	    }
 	  }]);
@@ -21994,7 +22004,7 @@
 	
 	var _constantsActionTypes = __webpack_require__(180);
 	
-	var initialState = [{ id: 1, messages: [{ id: 1, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Premonitions, premonitions. These visions you have..." }, { id: 2, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/obiwan.png" }, text: "They are of pain, suffering. Death." }, { id: 3, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Yourself you speak of, or someone you know? " }] }, { id: 2, messages: [{ id: 1, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/obiwan.png" }, text: "The traitors have been taken care of, Lord Sidious." }, { id: 2, user: { id: 3, name: "Darth Sidious", avatar: "./app/images/darthvader.png" }, text: "Good... Good... you have done well, my apprentice. Now Lord Vader, go and bring peace to the Empire." }] }];
+	var initialState = [{ id: 1, messages: [{ id: 1, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Premonitions, premonitions. These visions you have..." }, { id: 2, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/anakin.png" }, text: "They are of pain, suffering. Death." }, { id: 3, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Yourself you speak of, or someone you know? " }] }, { id: 2, messages: [{ id: 1, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/anakin.png" }, text: "The traitors have been taken care of, Lord Sidious." }, { id: 2, user: { id: 3, name: "Darth Sidious", avatar: "./app/images/sidious.png" }, text: "Good... Good... you have done well, my apprentice. Now Lord Vader, go and bring peace to the Empire." }] }];
 	
 	function threads(state, action) {
 	  if (state === undefined) state = initialState;
@@ -22005,8 +22015,7 @@
 	        id: state.reduce(function (maxId, thread) {
 	          return Math.max(thread.id, maxId);
 	        }, -1) + 1,
-	        completed: false,
-	        text: action.text
+	        messages: [{ id: 1, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: action.text }]
 	      }].concat(_toConsumableArray(state));
 	
 	    case _constantsActionTypes.DELETE_THREAD:

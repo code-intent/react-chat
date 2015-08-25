@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Threads extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
   render() {
     return (
