@@ -1,0 +1,29 @@
+html,body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+#chat-container {
+  width: 300px;
+  height:100%;
+  float: right;
+  background: #ebf9ff;
+}
+#chat-head h2 {
+  text-align: center;
+}
+#message-box {
+  padding:10px;
+}
+#message-box div{
+  height: 80px;
+  outline: 0;
+  background: #fff;
+  padding: 8px 16px;
+}
+[contenteditable=true]:empty:before {
+  font-style: italic;
+  color: #ccc;
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
