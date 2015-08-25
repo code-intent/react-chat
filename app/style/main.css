@@ -27,3 +27,27 @@ html,body {
   content: attr(placeholder);
   display: block; /* For Firefox */
 }
+#threads {
+  padding:0px 10px;
+}
+.chat-thread {
+  margin-bottom:10px;
+}
+.chat-message {
+  position:relative;
+  margin-bottom:1px;
+  padding:10px;
+  background: #fff;
+}
+.chat-message-avatar {
+  height:100%;
+  float:left;
+}
+.chat-message-avatar img {
+  margin:5px 10px 10px 5px;
+  border-radius: 50%;
+  width: 50px;
+}
+small {
+  color: #bbb;
+}

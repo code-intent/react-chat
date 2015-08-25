@@ -21826,21 +21826,21 @@
 /* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var _react = __webpack_require__(1);
 	
@@ -21849,19 +21849,54 @@
 	var Threads = (function (_Component) {
 	  _inherits(Threads, _Component);
 	
-	  function Threads() {
+	  function Threads(props) {
 	    _classCallCheck(this, Threads);
 	
-	    _get(Object.getPrototypeOf(Threads.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Threads.prototype), "constructor", this).call(this, props);
+	    this.state = {};
 	  }
 	
 	  _createClass(Threads, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        ' threads '
+	      return _react2["default"].createElement(
+	        "div",
+	        { id: "threads" },
+	        this.props.threads.map(function (thread) {
+	          return _react2["default"].createElement(
+	            "div",
+	            { className: "chat-thread" },
+	            thread.messages.map(function (message) {
+	              return _react2["default"].createElement(
+	                "div",
+	                { className: "chat-message" },
+	                _react2["default"].createElement(
+	                  "div",
+	                  { className: "chat-message-avatar" },
+	                  _react2["default"].createElement("img", { src: message.user.avatar })
+	                ),
+	                _react2["default"].createElement(
+	                  "div",
+	                  { className: "chat-message-content" },
+	                  _react2["default"].createElement(
+	                    "p",
+	                    { className: "chat-message-username" },
+	                    _react2["default"].createElement(
+	                      "small",
+	                      null,
+	                      message.user.name
+	                    )
+	                  ),
+	                  _react2["default"].createElement(
+	                    "p",
+	                    { className: "chat-message-text" },
+	                    message.text
+	                  )
+	                )
+	              );
+	            })
+	          );
+	        })
 	      );
 	    }
 	  }]);
@@ -21869,8 +21904,8 @@
 	  return Threads;
 	})(_react.Component);
 	
-	exports['default'] = Threads;
-	module.exports = exports['default'];
+	exports["default"] = Threads;
+	module.exports = exports["default"];
 
 /***/ },
 /* 179 */
@@ -21959,7 +21994,7 @@
 	
 	var _constantsActionTypes = __webpack_require__(180);
 	
-	var initialState = [{ id: 1, messages: [{ id: 1, user: { id: 1, name: "Master Yoda", avatar: "" }, text: "Premonitions, premonitions. These visions you have..." }, { id: 2, user: { id: 2, name: "Anakin Skywalker", avatar: "" }, text: "They are of pain, suffering. Death." }, { id: 3, user: { id: 1, name: "Master Yoda", avatar: "" }, text: "Yourself you speak of, or someone you know? " }] }, { id: 2, messages: [{ id: 1, user: { id: 2, name: "Anakin Skywalker", avatar: "" }, text: "The traitors have been taken care of, Lord Sidious." }, { id: 2, user: { id: 3, name: "Darth Sidious", avatar: "" }, text: "Good... Good... you have done well, my apprentice. Now Lord Vader, go and bring peace to the Empire." }] }];
+	var initialState = [{ id: 1, messages: [{ id: 1, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Premonitions, premonitions. These visions you have..." }, { id: 2, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/obiwan.png" }, text: "They are of pain, suffering. Death." }, { id: 3, user: { id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png" }, text: "Yourself you speak of, or someone you know? " }] }, { id: 2, messages: [{ id: 1, user: { id: 2, name: "Anakin Skywalker", avatar: "./app/images/obiwan.png" }, text: "The traitors have been taken care of, Lord Sidious." }, { id: 2, user: { id: 3, name: "Darth Sidious", avatar: "./app/images/darthvader.png" }, text: "Good... Good... you have done well, my apprentice. Now Lord Vader, go and bring peace to the Empire." }] }];
 	
 	function threads(state, action) {
 	  if (state === undefined) state = initialState;
