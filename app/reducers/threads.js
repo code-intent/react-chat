@@ -1,4 +1,4 @@
-import { ADD_THREAD, DELETE_THREAD, EDIT_MESSAGE } from '../constants/ActionTypes';
+import { ADD_THREAD, ADD_REPLY } from '../constants/ActionTypes';
 
 const initialState = [
   {id: 1, messages: [
@@ -20,13 +20,14 @@ export default function threads(state = initialState, action) {
       messages: [{id: 1, user: {id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png"}, text: action.text }],
     }, ...state];
 
-  case DELETE_THREAD:
-    return state.filter(thread =>
-      thread.id !== thread.id
-    );
-
-  case EDIT_MESSAGE:
-    return state;
+  case ADD_REPLY:
+    // TODO : REMOVE MUTATION
+    let thread = state[action.threadId];
+    let messages = thread.messages;
+    let length = messages.length;
+    var message = {id: length, user: {id: 1, name: "Master Yoda", avatar: "./app/images/yoda.png"}, text: action.text};
+    state[action.threadId].messages.push(message);
+    return [...state];
 
   default:
     return state;

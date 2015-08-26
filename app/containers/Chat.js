@@ -13,10 +13,11 @@ class Chat extends Component {
     return (
       <div id="chat-container">
         <div id="chat-head">
-          <h2>Chat</h2>
+          <span id="chat-head-title">What's happening?</span>
+          <span id="chat-head-icon"><i className="fa fa-comments-o"></i></span>
         </div>
         <MessageBox addThread={actions.addThread} />
-        <Threads threads={threads} actions={actions} />
+        <Threads threads={threads} addReply={actions.addReply} />
       </div>
     );
   }

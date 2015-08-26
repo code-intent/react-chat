@@ -12,7 +12,10 @@ export default class MessageBox extends Component {
   render() {
     return (
       <div id="message-box">
-        <div contentEditable="true" ref="message-text" onKeyDown={this.handleKeyPress.bind(this)} placeholder="create message"></div>
+        <div className="message" contentEditable="true"
+          ref="message-text"
+          onKeyDown={this.handleKeyPress.bind(this)}
+          placeholder="create message, hit enter to submit"></div>
       </div>
     );
   }
