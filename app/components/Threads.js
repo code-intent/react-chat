@@ -25,16 +25,15 @@ export default class Threads extends Component {
     }
   }
   render() {
-    console.log("RENDER threads");
     const replyHolder = "reply-holder-";
     const reply = "reply-";
     return (
       <div id="threads">
         {this.props.threads.map((thread, index) =>
-          <div className="chat-thread-container">
+          <div key={index} className="chat-thread-container">
             <div className="chat-thread">
-              {thread.messages.map(message =>
-                <div className="chat-message">
+              {thread.messages.map((message, mindex) =>
+                <div key={mindex} className="chat-message">
                   <div className="chat-message-avatar">
                     <img src={message.user.avatar}/>
                   </div>
