@@ -3,7 +3,7 @@ Chat application using React.js and Redux for state management
 
 Live at http://codeintent.com/chat
 
-###$ Roadmap
+### Roadmap
 
 - [x] create new thread
 - [x] reply to a thread
