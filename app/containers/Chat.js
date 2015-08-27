@@ -14,7 +14,7 @@ class Chat extends Component {
       <div id="chat-container">
         <div id="chat-head">
           <span id="chat-head-title">What's happening?</span>
-          <span id="chat-head-icon"><i className="fa fa-comments-o"></i></span>
+          <span id="chat-head-icon"><i className="fa fa-comment-o"></i></span>
         </div>
         <MessageBox addThread={actions.addThread} />
         <Threads threads={threads} addReply={actions.addReply} />
