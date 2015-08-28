@@ -4,6 +4,6 @@ export function addThread(text) {
   return { type: types.ADD_THREAD, text };
 }
 
-export function addReply(threadId, text) {
-  return { type: types.ADD_REPLY, threadId: threadId, text: text }
+export function addReply(index, text) {
+  return { type: types.ADD_REPLY, index: index, text: text }
 }

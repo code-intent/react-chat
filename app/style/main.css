@@ -14,10 +14,12 @@ html,body {
   -moz-box-shadow: -10px 10px 40px -25px rgba(0,0,0,0.75);
   box-shadow: -10px 10px 40px -25px rgba(0,0,0,0.75);
   width: 300px;
-  height:auto;
   position:fixed;
-  top:0px;
-  right:0px;
+  top:0;
+  bottom:0;
+  right:0;
+  overflow-y:scroll;
+  overflow-x:hidden;
   background: #ebf9ff;
 }
 #chat-head {
@@ -36,19 +38,22 @@ html,body {
   padding:10px;
 }
 .message {
+  resize: none;
+  border: none;
+  width:100%;
   height: 80px;
   outline: 0;
   background: #fff;
   padding: 8px 16px;
 }
-[contenteditable=true]:empty:before {
+/*[contenteditable=true]:empty:before {
   margin-top: -2px;
   padding: 0px 3px;
   font-style: italic;
   color: #aaa;
   content: attr(placeholder);
-  display: block; /* For Firefox */
-}
+  display: block;
+}*/
 #threads {
   padding:0px 10px;
 }

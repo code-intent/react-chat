@@ -6,52 +6,50 @@ export default class Threads extends Component {
     this.state = {};
   }
   showReplyBox(index) {
-    let elem = React.findDOMNode(this.refs["reply-holder-" + index]);
+    const elem = React.findDOMNode(this.refs["reply-holder-" + index]);
     if(elem.className === "hidden") {
-      elem.className = ""; // show
+      elem.className = "";
     } else {
-      elem.className = "hidden"; // hide
+      elem.className = "hidden";
     }
   }
   handleKeyPress(e) {
     if(e.keyCode == 13) {
-      let id = e.target.id;
-      let elem = React.findDOMNode(this.refs["reply-" + id]);
-      let text = elem.innerHTML;
-      this.props.addReply(id, text);
-      let parent = React.findDOMNode(this.refs["reply-holder-" + id]);
+      const index = e.target.id;
+      const elem = React.findDOMNode(this.refs['reply-' + index]);
+      const parent = React.findDOMNode(this.refs["reply-holder-" + index]);
+      const text = elem.value;
+      this.props.addReply(index, text);
       parent.className = "hidden";
-      elem.innerHTML = "";
+      elem.value = "";
     }
   }
   render() {
-    const replyHolder = "reply-holder-";
-    const reply = "reply-";
+    const {threads} = this.props;
     return (
       <div id="threads">
-        {this.props.threads.map((thread, index) =>
-          <div key={index} className="chat-thread-container">
+        {threads.map((t, ti) =>
+          <div key={ti} className="chat-thread-container">
             <div className="chat-thread">
-              {thread.messages.map((message, mindex) =>
-                <div key={mindex} className="chat-message">
+              {t.map((m, mi) =>
+                <div key={mi} className="chat-message">
                   <div className="chat-message-avatar">
-                    <img src={message.user.avatar}/>
+                    <img src={m.user.avatar}/>
                   </div>
                   <div className="chat-message-content">
-                    <p className="chat-message-username"><small>{message.user.name}</small></p>
-                    <p className="chat-message-text">{message.text}</p>
+                    <p className="chat-message-username"><small>{m.user.name}</small></p>
+                    <p className="chat-message-text">{m.text}</p>
                   </div>
                 </div>
               )}
-              <span className="chat-thread-reply" onClick={() => this.showReplyBox(index)}></span>
+              <span className="chat-thread-reply" onClick={this.showReplyBox.bind(this, ti)}></span>
             </div>
-            <div className="hidden" ref={replyHolder+index}>
-              <div className="message"
-                id={index}
-                ref={reply+index}
+            <div className="hidden" ref={'reply-holder-'+ ti}>
+              <textarea className="message"
+                ref={'reply-' + ti}
+                id={ti}
                 onKeyDown={this.handleKeyPress.bind(this)}
-                contentEditable="true"
-                placeholder="create reply, hit enter to submit"></div>
+                placeholder="create reply, hit enter to submit"></textarea>
             </div>
           </div>
         )}
