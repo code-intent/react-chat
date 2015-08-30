@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import threads from './threads';
 
 const rootReducer = combineReducers({
-  threads
+  threads,
 });
 
 export default rootReducer;

@@ -5,5 +5,5 @@ export function addThread(text) {
 }
 
 export function addReply(index, text) {
-  return { type: types.ADD_REPLY, index: index, text: text }
+  return { type: types.ADD_REPLY, index: index, text: text };
 }
